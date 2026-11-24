@@ -10,6 +10,7 @@ import android.widget.RemoteViews
 import org.json.JSONObject
 import java.net.HttpURLConnection
 import java.net.URL
+import java.util.Locale
 import kotlin.math.abs
 
 object WidgetUpdater {
@@ -41,11 +42,16 @@ object WidgetUpdater {
 
         return try {
             val obj = JSONObject(jsonText)
-            val equity = obj.optString("equity", "0")
-            val balance = obj.optString("balance", "0")
+            val equityVal = obj.optDouble("equity", 0.0)
+            val balanceVal = obj.optDouble("balance", 0.0)
             val pnlVal = obj.optDouble("pnl", 0.0)
+            val liveBalVal = balanceVal + pnlVal
+
+            val liveBalStr = String.format(Locale.US, "%.2f", liveBalVal)
+            val equityStr = String.format(Locale.US, "%.2f", equityVal)
+
             val targetVal = obj.optDouble("target", 0.0)
-            val targetStr = String.format("%.2f", targetVal)
+            val targetStr = String.format(Locale.US, "%.2f", targetVal)
             val todayVal = obj.optDouble("today_net", 0.0)
             val state = obj.optString("state", "IDLE")
             val level = obj.optInt("level", 0)
@@ -86,9 +92,9 @@ object WidgetUpdater {
             }
 
             val views = RemoteViews(context.packageName, R.layout.widget_terrifier)
-            views.setTextViewText(R.id.tv_equity, "€$equity")
+            views.setTextViewText(R.id.tv_equity, "€$liveBalStr")
             views.setTextViewText(R.id.tv_pnl, pnlStr)
-            views.setTextViewText(R.id.tv_bal_today, "Bal €$balance · Heute $todayStr")
+            views.setTextViewText(R.id.tv_bal_today, "Eq €$equityStr · Heute $todayStr")
             views.setTextViewText(R.id.tv_status_line, "$state · Lvl $level/$maxLevel · $trend ($adx) · $timeShort")
             views.setTextViewText(R.id.tv_trades_header, "TRADES ($level) · $trailTag")
             views.setTextViewText(R.id.tv_trades_list, tradesBuilder.toString())
@@ -135,14 +141,14 @@ object WidgetUpdater {
                 mgr.updateAppWidget(id, views)
             }
 
-            Summary("€$equity", pnlStr, state, level, maxLevel, todayStr)
+            Summary("€$liveBalStr", pnlStr, state, level, maxLevel, todayStr)
         } catch (_: Exception) {
             null
         }
     }
 
     private fun formatEuro(v: Double): String {
-        val absStr = if (abs(v) % 1.0 == 0.0) abs(v).toInt().toString() else String.format("%.2f", abs(v))
+        val absStr = if (abs(v) % 1.0 == 0.0) abs(v).toInt().toString() else String.format(Locale.US, "%.2f", abs(v))
         return when {
             v > 0 -> "+€$absStr"
             v < 0 -> "-€$absStr"
