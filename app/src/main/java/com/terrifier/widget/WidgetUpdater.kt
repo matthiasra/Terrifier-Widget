@@ -80,8 +80,7 @@ object WidgetUpdater {
                     val tLot = t.optString("lot", "")
                     val tPnl = formatEuro(t.optDouble("pnl", 0.0))
                     val tPips = t.optString("pips", "0")
-                    if (i > 0) tradesBuilder.append("
-")
+                    if (i > 0) tradesBuilder.append("\n")
                     tradesBuilder.append("$tType ${tLot}L $tPnl (${tPips}p)")
                 }
             }
