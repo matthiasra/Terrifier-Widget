@@ -8,6 +8,8 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Build
 import android.os.IBinder
 import android.os.PowerManager
@@ -22,6 +24,7 @@ class LiveUpdateService : Service() {
     private var pollTask: ScheduledFuture<*>? = null
     private var lastAlertLevel = 0
     private var lastAlertState = ""
+    private var terrifierIcon: Bitmap? = null
 
     private val screenReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
@@ -34,6 +37,7 @@ class LiveUpdateService : Service() {
 
     override fun onCreate() {
         super.onCreate()
+        terrifierIcon = BitmapFactory.decodeResource(resources, R.drawable.ic_terrifier)
         createChannels()
         startForeground(NOTIF_ID, buildLiveNotification("Terrifier Live", "Smart-Polling aktiv"))
 
@@ -77,13 +81,11 @@ class LiveUpdateService : Service() {
     private fun checkAlerts(nm: NotificationManager, s: WidgetUpdater.Summary) {
         if (!Prefs.isAlertsEnabled(this)) return
 
-        // Grid Level >= 4 Alert (triggers once per escalation)
         if (s.level >= 4 && s.level > lastAlertLevel) {
             sendAlert(nm, 2001, "⚠️ Terrifier Grid Level ${s.level}/${s.maxLevel}", "Floating PnL: ${s.pnl} · Equity: ${s.equity}")
         }
         lastAlertLevel = s.level
 
-        // Critical State Alerts (triggers once per state change)
         val st = s.state.uppercase()
         if (st != lastAlertState) {
             when (st) {
@@ -97,7 +99,8 @@ class LiveUpdateService : Service() {
 
     private fun sendAlert(nm: NotificationManager, id: Int, title: String, text: String) {
         val notif = NotificationCompat.Builder(this, ALERT_CHANNEL_ID)
-            .setSmallIcon(android.R.drawable.ic_dialog_alert)
+            .setSmallIcon(R.drawable.ic_terrifier)
+            .setLargeIcon(terrifierIcon)
             .setContentTitle(title)
             .setContentText(text)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
@@ -134,7 +137,8 @@ class LiveUpdateService : Service() {
 
     private fun buildLiveNotification(title: String, text: String): Notification {
         return NotificationCompat.Builder(this, CHANNEL_ID)
-            .setSmallIcon(android.R.drawable.ic_menu_compass)
+            .setSmallIcon(R.drawable.ic_terrifier)
+            .setLargeIcon(terrifierIcon)
             .setContentTitle(title)
             .setContentText(text)
             .setOngoing(true)
