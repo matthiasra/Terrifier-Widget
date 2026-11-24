@@ -10,8 +10,8 @@
     <application
         android:allowBackup="true"
         android:label="Terrifier Live"
-        android:icon="@drawable/ic_launcher_fg"
-        android:roundIcon="@drawable/ic_launcher_fg"
+        android:icon="@drawable/ic_terrifier"
+        android:roundIcon="@drawable/ic_terrifier"
         android:supportsRtl="true"
         android:theme="@style/Theme.Material3.Dark.NoActionBar">
 
