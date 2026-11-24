@@ -53,7 +53,7 @@ object WidgetUpdater {
             val trend = obj.optString("trend", "-")
             val adx = obj.optString("adx", "-")
             val stFull = obj.optString("st", "")
-            val timeShort = if (stFull.length >= 16) stFull.substring(11, 16) else stFull
+            val timeShort = if (stFull.length >= 19) stFull.substring(11, 19) else stFull
 
             val cfg = obj.optJSONObject("cfg")
             val s2Enabled = cfg?.optBoolean("t_2s", false) ?: false
