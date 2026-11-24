@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:paddingStart="6dp"
+    android:paddingEnd="6dp"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp"
+    android:background="@android:color/transparent">
+
+    <!-- LEFT COLUMN: Main Stats (Tap -> Web-Terminal) -->
+    <LinearLayout
+        android:id="@+id/col_left"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.15"
+        android:orientation="vertical"
+        android:gravity="start">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/iv_status_dot"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginEnd="6dp"
+                android:src="@drawable/dot_green" />
+
+            <TextView
+                android:id="@+id/tv_equity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="€0.00"
+                android:textColor="#FFFFFFFF"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:shadowColor="#E6000000"
+                android:shadowDx="1.5"
+                android:shadowDy="1.5"
+                android:shadowRadius="4" />
+
+            <TextView
+                android:id="@+id/tv_pnl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:background="@drawable/pill_neutral"
+                android:text="€0"
+                android:textColor="#FFFFFFFF"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_bal_today"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Bal €0.00 · Heute €0.00"
+            android:textColor="#FFFFFFFF"
+            android:textSize="12.5sp"
+            android:textStyle="bold"
+            android:shadowColor="#E6000000"
+            android:shadowDx="1.5"
+            android:shadowDy="1.5"
+            android:shadowRadius="4" />
+
+        <TextView
+            android:id="@+id/tv_status_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:text="Lade Daten..."
+            android:textColor="#F2F8FAFC"
+            android:textSize="11.5sp"
+            android:shadowColor="#E6000000"
+            android:shadowDx="1.5"
+            android:shadowDy="1.5"
+            android:shadowRadius="4" />
+    </LinearLayout>
+
+    <!-- RIGHT COLUMN: Open Trades (Tap -> Instant Refresh) -->
+    <LinearLayout
+        android:id="@+id/col_right"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.85"
+        android:orientation="vertical"
+        android:gravity="end">
+
+        <TextView
+            android:id="@+id/tv_trades_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TRADES (0) · Ziel +€2.20"
+            android:textColor="#FFFDE047"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:gravity="end"
+            android:shadowColor="#E6000000"
+            android:shadowDx="1.5"
+            android:shadowDy="1.5"
+            android:shadowRadius="4" />
+
+        <TextView
+            android:id="@+id/tv_trades_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Keine Positionen"
+            android:textColor="#FFFFFFFF"
+            android:textSize="11sp"
+            android:gravity="end"
+            android:lineSpacingExtra="1dp"
+            android:shadowColor="#E6000000"
+            android:shadowDx="1.5"
+            android:shadowDy="1.5"
+            android:shadowRadius="4" />
+    </LinearLayout>
+
+</LinearLayout>

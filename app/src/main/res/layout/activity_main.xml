@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0B1120">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Terrifier Live v2"
+            android:textColor="#FFFFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Smart-Polling · 2-Stage Trail · Push-Alerts"
+            android:textColor="#60A5FA"
+            android:textSize="12sp"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="API URL (index.php?api=data)"
+            android:textColor="#94A3B8"
+            android:textSize="13sp" />
+
+        <EditText
+            android:id="@+id/et_url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFFFF"
+            android:textColorHint="#64748B"
+            android:inputType="textUri"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update-Intervall bei aktivem Display (Sekunden)"
+            android:textColor="#94A3B8"
+            android:textSize="13sp" />
+
+        <EditText
+            android:id="@+id/et_interval"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFFFF"
+            android:inputType="number"
+            android:layout_marginBottom="16dp" />
+
+        <CheckBox
+            android:id="@+id/cb_alerts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Push-Alerts aktivieren (Grid ≥ 4, Profit Hit, Emergency, News)"
+            android:textColor="#E2E8F0"
+            android:textSize="13sp"
+            android:layout_marginBottom="20dp" />
+
+        <Button
+            android:id="@+id/btn_save_start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Speichern &amp; Live-Service starten"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btn_stop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Live-Service stoppen"
+            android:backgroundTint="#334155"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="• Tipp links aufs Widget: Öffnet dein Web-Terminal
+• Tipp rechts aufs Widget: Sofort-Refresh
+• Display aus = 0% Standby-Verbrauch
+• Startet nach Handy-Neustart automatisch"
+            android:textColor="#94A3B8"
+            android:textSize="12.5sp"
+            android:lineSpacingExtra="4dp" />
+
+    </LinearLayout>
+</ScrollView>
