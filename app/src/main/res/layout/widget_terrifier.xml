@@ -15,7 +15,7 @@
         android:id="@+id/col_left"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1.15"
+        android:layout_weight="1.12"
         android:orientation="vertical"
         android:gravity="start">
 
@@ -47,10 +47,10 @@
                 android:textColor="#FFFFFFFF"
                 android:textSize="21sp"
                 android:textStyle="bold"
-                android:shadowColor="#E6000000"
-                android:shadowDx="1.5"
+                android:shadowColor="#FF000000"
+                android:shadowDx="1.2"
                 android:shadowDy="1.5"
-                android:shadowRadius="4" />
+                android:shadowRadius="2.5" />
 
             <TextView
                 android:id="@+id/tv_pnl"
@@ -73,27 +73,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:text="Bal €0.00 · Heute €0.00"
+            android:text="Eq €0.00 · Heute €0.00"
             android:textColor="#FFFFFFFF"
             android:textSize="12.5sp"
             android:textStyle="bold"
-            android:shadowColor="#E6000000"
-            android:shadowDx="1.5"
+            android:shadowColor="#FF000000"
+            android:shadowDx="1.2"
             android:shadowDy="1.5"
-            android:shadowRadius="4" />
+            android:shadowRadius="2.5" />
 
         <TextView
             android:id="@+id/tv_status_line"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="2dp"
             android:text="Lade Daten..."
-            android:textColor="#F2F8FAFC"
-            android:textSize="11.5sp"
-            android:shadowColor="#E6000000"
-            android:shadowDx="1.5"
+            android:textColor="#FFFFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:shadowColor="#FF000000"
+            android:shadowDx="1.2"
             android:shadowDy="1.5"
-            android:shadowRadius="4" />
+            android:shadowRadius="2.5" />
     </LinearLayout>
 
     <!-- RIGHT COLUMN: Open Trades (Tap -> Instant Refresh) -->
@@ -101,7 +102,7 @@
         android:id="@+id/col_right"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.85"
+        android:layout_weight="0.88"
         android:orientation="vertical"
         android:gravity="end">
 
@@ -110,14 +111,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TRADES (0) · Ziel +€2.20"
-            android:textColor="#FFFDE047"
-            android:textSize="11sp"
+            android:textColor="#FFFFC107"
+            android:textSize="11.5sp"
             android:textStyle="bold"
             android:gravity="end"
-            android:shadowColor="#E6000000"
-            android:shadowDx="1.5"
+            android:shadowColor="#FF000000"
+            android:shadowDx="1.2"
             android:shadowDy="1.5"
-            android:shadowRadius="4" />
+            android:shadowRadius="2.5" />
 
         <TextView
             android:id="@+id/tv_trades_list"
@@ -126,13 +127,14 @@
             android:layout_marginTop="2dp"
             android:text="Keine Positionen"
             android:textColor="#FFFFFFFF"
-            android:textSize="11sp"
+            android:textSize="11.5sp"
+            android:textStyle="bold"
             android:gravity="end"
-            android:lineSpacingExtra="1dp"
-            android:shadowColor="#E6000000"
-            android:shadowDx="1.5"
+            android:lineSpacingExtra="2dp"
+            android:shadowColor="#FF000000"
+            android:shadowDx="1.2"
             android:shadowDy="1.5"
-            android:shadowRadius="4" />
+            android:shadowRadius="2.5" />
     </LinearLayout>
 
 </LinearLayout>
