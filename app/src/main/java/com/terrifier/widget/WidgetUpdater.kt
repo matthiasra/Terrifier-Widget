@@ -95,7 +95,7 @@ object WidgetUpdater {
             views.setTextViewText(R.id.tv_equity, "€$liveBalStr")
             views.setTextViewText(R.id.tv_pnl, pnlStr)
             views.setTextViewText(R.id.tv_bal_today, "Eq €$equityStr · Heute $todayStr")
-            views.setTextViewText(R.id.tv_status_line, "$state · Lvl $level/$maxLevel · $trend ($adx) · $timeShort")
+            views.setTextViewText(R.id.tv_status_line, "$state · Lvl $level/$maxLevel · $trend ($adx)\n$timeShort")
             views.setTextViewText(R.id.tv_trades_header, "TRADES ($level) · $trailTag")
             views.setTextViewText(R.id.tv_trades_list, tradesBuilder.toString())
 
