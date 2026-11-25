@@ -91,6 +91,7 @@
             android:textColor="#FFFFFFFF"
             android:textSize="12sp"
             android:textStyle="bold"
+            android:lineSpacingExtra="2dp"
             android:shadowColor="#FF000000"
             android:shadowDx="1.2"
             android:shadowDy="1.5"
@@ -111,12 +112,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TRADES (0) · Ziel +€2.20"
-            android:textColor="#FFFFC107"
-            android:textSize="11.5sp"
+            android:textColor="#FFFFFFFF"
+            android:textSize="12sp"
             android:textStyle="bold"
             android:gravity="end"
             android:shadowColor="#FF000000"
-            android:shadowDx="1.2"
+            android:shadowDx="1.5"
             android:shadowDy="1.5"
             android:shadowRadius="2.5" />
 
