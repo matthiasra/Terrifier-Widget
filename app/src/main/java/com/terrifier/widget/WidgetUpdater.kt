@@ -5,7 +5,11 @@ import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.ForegroundColorSpan
 import android.widget.RemoteViews
 import org.json.JSONObject
 import java.net.HttpURLConnection
@@ -74,20 +78,36 @@ object WidgetUpdater {
                 else -> "Ziel +€$targetStr"
             }
 
-            val tradesBuilder = StringBuilder()
+            val tradesSpan = SpannableStringBuilder()
             val tradesArr = obj.optJSONArray("trades")
             if (level == 0 || tradesArr == null || tradesArr.length() == 0) {
-                tradesBuilder.append("Keine Positionen")
+                tradesSpan.append("Keine Positionen")
             } else {
                 val count = minOf(tradesArr.length(), 6)
+                val green = Color.parseColor("#4ADE80")
+                val red = Color.parseColor("#F87171")
+                val neutral = Color.parseColor("#E2E8F0")
+
                 for (i in 0 until count) {
                     val t = tradesArr.getJSONObject(i)
                     val tType = t.optString("type", "")
                     val tLot = t.optString("lot", "")
-                    val tPnl = formatEuro(t.optDouble("pnl", 0.0))
+                    val tPnlVal = t.optDouble("pnl", 0.0)
+                    val tPnl = formatEuro(tPnlVal)
                     val tPips = t.optString("pips", "0")
-                    if (i > 0) tradesBuilder.append("\n")
-                    tradesBuilder.append("$tType ${tLot}L $tPnl (${tPips}p)")
+
+                    if (i > 0) tradesSpan.append("\n")
+                    tradesSpan.append("$tType ${tLot}L ")
+
+                    val start = tradesSpan.length
+                    tradesSpan.append("$tPnl (${tPips}p)")
+                    val end = tradesSpan.length
+                    val clr = when {
+                        tPnlVal > 0 -> green
+                        tPnlVal < 0 -> red
+                        else -> neutral
+                    }
+                    tradesSpan.setSpan(ForegroundColorSpan(clr), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 }
             }
 
@@ -97,7 +117,7 @@ object WidgetUpdater {
             views.setTextViewText(R.id.tv_bal_today, "Eq €$equityStr · Heute $todayStr")
             views.setTextViewText(R.id.tv_status_line, "$state · Lvl $level/$maxLevel · $trend ($adx)\n$timeShort")
             views.setTextViewText(R.id.tv_trades_header, "TRADES ($level) · $trailTag")
-            views.setTextViewText(R.id.tv_trades_list, tradesBuilder.toString())
+            views.setTextViewText(R.id.tv_trades_list, tradesSpan)
 
             val dotRes = when (state.uppercase()) {
                 "HUNTING" -> R.drawable.dot_green
